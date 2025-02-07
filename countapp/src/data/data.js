@@ -1,3 +1,4 @@
+// Define image data for pages
 const Data = {
   pages: [
     {

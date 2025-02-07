@@ -1,3 +1,4 @@
+// Define animation data with various predetermined positions
 const animationData = {
   pages: [
     {

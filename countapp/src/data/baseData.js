@@ -1,3 +1,5 @@
+// Define counting cases
+// Maybe make this more dynamic?
 const baseData ={
     pages: [
         {

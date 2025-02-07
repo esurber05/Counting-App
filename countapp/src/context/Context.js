@@ -7,7 +7,7 @@ import sectionTrainData from "../data/sectionTrainingData.js";
 import trainData from  "../data/trainData.js";
 import audioFiles from '../data/audioData.js';
 
-
+// create context with default values
 const AppDataContext = createContext({
     animationData: animationData,
     baseData: baseData,
@@ -18,8 +18,9 @@ const AppDataContext = createContext({
     audioData: audioFiles,
 });
 
+// AppDataProvider component to provide context to children
 export const AppDataProvider = ({ children }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(null); // track selected option
   return <AppDataContext.Provider 
     value={{ animationData: animationData, 
              baseData: baseData, 
@@ -32,6 +33,7 @@ export const AppDataProvider = ({ children }) => {
              setSelectedOption: setSelectedOption}}>{children}</AppDataContext.Provider>;
 };
 
+// use AppDataContext
 export const useAppData = () => {
   return useContext(AppDataContext);
 };

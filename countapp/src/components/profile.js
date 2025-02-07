@@ -4,12 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/profile.css';
 import profileicon from '../assests/profileicon.png'
 
+// Display user profile and handle logout
 function profile({name}) {
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Hook to naviage programmaticly()
 
+  // handle logout logic
   const handleLogout = (callback) => {
-    window.localStorage.clear();
+    window.localStorage.clear(); // clear local storage
     if (typeof callback === 'function') {
       callback();
     }
@@ -17,7 +19,7 @@ function profile({name}) {
 
   const handleLogoutClick = () => {
     handleLogout(() => {
-      navigate('/');
+      navigate('/'); // navigate to home page after logout
     });
   };
 

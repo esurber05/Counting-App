@@ -7,8 +7,9 @@ import seseme from '../assests/seseme.gif';
 import CloseIcon from '@mui/icons-material/Close';
 import "../styles/dialogbox.css";
 
+// DialogBox xcompnent to display a modal dialog
 function DialogBox(props) {
-  const { selectedOption } = useAppData();
+  const { selectedOption } = useAppData(); // access selectedOption from AppData context
 
   return (
     <Modal

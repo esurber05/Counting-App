@@ -35,6 +35,7 @@ function App() {
       <SoundProvider>
       <AppDataProvider>
       <Router>
+        // Define routes for different pages in the application
         <Routes>
           <Route path='/' element={isLoggedIn == "true"? <Home /> : <SignupPage />}/>
           <Route path='/game/selection' element={<SelectorPage />}/>
@@ -57,4 +58,5 @@ function App() {
   );
 }
 
+// Export the App componet
 export default App;

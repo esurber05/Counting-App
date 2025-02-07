@@ -1,29 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/animation.css';
 
+// AnimationNoCircle component to handle animation logic without circleDraw function
 function AnimationNoCircle({ onAnimationFinish }) {
-  const [percent, setPercent] = useState(0);
-  const [animationFinished, setAnimationFinished] = useState(false);
+  const [percent, setPercent] = useState(0); // track progress
+  const [animationFinished, setAnimationFinished] = useState(false); // track if animation finished
 
-
+  // useEffect hook to handle animation progress
   useEffect(() => {
     const interval = setInterval(() => {
       if (percent < 100) {
-        setPercent((prevPercent) => prevPercent + 4);
-      } else {
+        setPercent((prevPercent) => prevPercent + 4); // increment progress
+      } else { // clear interval when animation is finished
         clearInterval(interval);
         setTimeout(() => {
           setAnimationFinished(true);
           onAnimationFinish(); 
         }, 1000);
       }
-    }, 100);
+    }, 100); // update progress every 100ms
 
     return () => {
       clearInterval(interval);
     };
   }, [percent]);
 
+  // useEffect hook to update progress ellipse based on percentage
   useEffect(() => {
     let progressEllipse = document.querySelector('.progress');
     let rx = parseFloat(progressEllipse.getAttribute('rx'));

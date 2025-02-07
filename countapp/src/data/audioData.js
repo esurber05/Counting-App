@@ -13,6 +13,7 @@ import total2 from "../assests/audio/circling2cookies.mp3";
 import total10 from "../assests/audio/CirclingT1.mp3";
 import total5 from "../assests/audio/CirclingT2.mp3";
 
+// Create a constant to store audio data from assets folder
 const audioData = {
   trills: [Trill1, Trill2, Trill3, Trill4, Trill5, Trill6, Trill7, Trill8, Trill9, Trill10],
   circling: {
