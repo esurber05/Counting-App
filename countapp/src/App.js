@@ -14,6 +14,7 @@ import AnimationTrainingPage from './pages/animationTrainingPage';
 import TouchTrainingPage from './pages/TouchTrainingPage';
 import BasePage2 from './pages/basePage 2.js';
 import BaseTrainingPage2 from './pages/baseTraining 2.js';
+import CookieTrayTestPage from "./pages/cookietraytest.js";
 import { SoundProvider } from './helpers/SoundContext';
 import { AppDataProvider } from './context/Context.js';
 import './App.css';
@@ -35,7 +36,6 @@ function App() {
       <SoundProvider>
       <AppDataProvider>
       <Router>
-        // Define routes for different pages in the application
         <Routes>
           <Route path='/' element={isLoggedIn == "true"? <Home /> : <SignupPage />}/>
           <Route path='/game/selection' element={<SelectorPage />}/>
@@ -50,6 +50,7 @@ function App() {
           <Route path='/game/base2/training/:page' element={<BaseTrainingPage2 />}/>
           <Route path='/game/animation/training/:page' element={<AnimationTrainingPage />}/>
           <Route path='/game/touch/training/:page' element={<TouchTrainingPage />}/>
+          <Route path="/game/cookie-tray-test" element={<CookieTrayTestPage />} />
         </Routes>
      </Router>
      </AppDataProvider>

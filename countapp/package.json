@@ -29,8 +29,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "NODE_OPTIONS=--openssl-legacy-provider node ./server/server.js",
-    "dev": "NODE_OPTIONS=--openssl-legacy-provider npm-run-all --parallel start server"
+    "server": "node ./server/server.js",
+    "dev": "npm-run-all --parallel start server"
   },
   "eslintConfig": {
     "extends": [

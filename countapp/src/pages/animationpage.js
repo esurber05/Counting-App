@@ -40,7 +40,7 @@ const animationPage = () => {
 
   const audioUrls = [audioData.trills[0], audioData.trills[1],audioData.trills[2],audioData.trills[3],audioData.trills[4],audioData.trills[5],audioData.trills[6],audioData.trills[7],audioData.trills[8],audioData.trills[9]];
 
-
+  // function to handle the end of the animation
   const handleAnimationFinish = () => {
     
     setTimeout(() => {
@@ -78,6 +78,7 @@ const animationPage = () => {
       
   };
 
+  // function to speak the utterance
   const speakUtterance = () => {
     if(soundEnabled){
     const utterance = `Cookie Monster has ${animationData.pages[currentPage].cookies.length} cookies. Let's count together!`;
@@ -91,7 +92,7 @@ const animationPage = () => {
     }, 1000);
   }
   };
-
+  // useEffect hook to handle the utterance
   useEffect(() => {
     if (!spokenRef.current) {
       speakUtterance();
@@ -99,6 +100,7 @@ const animationPage = () => {
     }
   }, [currentPage]);
 
+  // useEffect hook to handle the touch event
   useEffect(() => {
     if(!once.current){
       document.addEventListener('touchstart', (event) => {
@@ -115,12 +117,12 @@ const animationPage = () => {
     }
   }, []);
 
-
+  // message to be displayed based on the state
   const message = showMessage
   ? `Can Big Bird also have ${animationData.pages[currentPage].cookies.length} cookies? Which tray has ${animationData.pages[currentPage].cookies.length} cookies? Green or purple?`
   : `Cookie Monster has ${animationData.pages[currentPage].cookies.length} cookies. Let's count together!`;
 
-
+// useEffect hook to handle animation
 useEffect(() => {
   if(firstAudioStarted == true){
     if (activeCookieIndex -1 <= animationData.pages[currentPage].cookies.length) {
@@ -142,7 +144,7 @@ useEffect(() => {
   }, [activeCookieIndex, firstAudioStarted]);
 
     
-
+  // function to handle the next page
   const handleNextPage = () => {
     if (currentPage < 3) {
       setShowTray2(false);
@@ -158,7 +160,7 @@ useEffect(() => {
       saveAnswers("animationTest");
     }
   };
-
+  // function to handle the previous page
   const handlePreviousPage = () => {
     if (currentPage > 0) {
       setShowTray2(false);
