@@ -14,6 +14,7 @@ import AnimationTrainingPage from './pages/animationTrainingPage';
 import TouchTrainingPage from './pages/TouchTrainingPage';
 import BasePage2 from './pages/basePage 2.js';
 import BaseTrainingPage2 from './pages/baseTraining 2.js';
+import SelectValuesPage from './pages/selectValuesPage.js';
 import CookieTrayTestPage from "./pages/cookietraytest.js";
 import CookieTrayStaticPage from './pages/cookietraystatic.js';
 import { SoundProvider } from './helpers/SoundContext';
@@ -40,6 +41,7 @@ function App() {
         <Routes>
           <Route path='/' element={isLoggedIn == "true"? <Home /> : <SignupPage />}/>
           <Route path='/game/selection' element={<SelectorPage />}/>
+          <Route path='/game/values' element={<SelectValuesPage />}/>
           <Route path='/game/home/:option' element={<Home />}/>
           <Route path='/game/touch/play/:page' element={<GamePage />}/>
           <Route path='/game/animation/play/:page' element={<AnimationPage />}/>
