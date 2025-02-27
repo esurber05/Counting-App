@@ -5,9 +5,14 @@ import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 
 const SelectValuesPage = () => {
   const [number, setNumber] = useState("");
-  const [range, setRange] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+
+  const handleNumberSelect = (value) => {
+    setNumber(value);
+    setError("");
+  };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,23 +26,11 @@ const SelectValuesPage = () => {
       return;
     }
 
-    // Validate the range format
-    const rangePattern = /^([1-9]|10)-([1-9]|10)$/;
-    if (!rangePattern.test(range)) {
-      setError("Enter a range in the format X-Y with numbers from 1 to 10.");
-      return;
-    }
-
-    const [start, end] = range.split("-").map(n => parseInt(n, 10));
-    if (start > end) {
-      setError("Start number must be less than or equal to the end number.");
-      return;
-    }
 
     setError("");
-    const answers = { number: num, range: [start, end] };
+    const answers = { number: num};
     localStorage.setItem("selectValuesPageAnswers", JSON.stringify(answers));
-    setSuccess("Values submitted successfully!" + "\nNumber: " + num + " Range: " + range);
+    setSuccess("Values submitted successfully!" + "\nNumber: " + num);
     console.log("Submitted:", answers);
   };
 
@@ -54,13 +47,6 @@ const SelectValuesPage = () => {
             onChange={(e) => setNumber(e.target.value)}
             min="1"
             max="10"
-          />
-          <label htmlFor="rangeInput">Range (e.g., 1-3):</label>
-          <input
-            type="text"
-            id="rangeInput"
-            value={range}
-            onChange={(e) => setRange(e.target.value)}
           />
           {error && <div className="error">{error}</div>}
           {success && <div className="success">{success}</div>}
