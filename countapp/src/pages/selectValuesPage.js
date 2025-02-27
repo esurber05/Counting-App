@@ -5,6 +5,7 @@ import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 
 const SelectValuesPage = () => {
   const [number, setNumber] = useState("");
+  const [difficulty, setDifficulty] = useState(null);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -23,6 +24,11 @@ const SelectValuesPage = () => {
     const num = parseInt(number, 10);
     if (isNaN(num) || num < 1 || num > 10) {
       setError("Enter a number from 1 to 10.");
+      return;
+    }
+
+    if (difficulty == null) {
+      setError("Select a difficulty.");
       return;
     }
 
@@ -52,6 +58,21 @@ const SelectValuesPage = () => {
           {success && <div className="success">{success}</div>}
           <button type="submit">Submit</button>
         </form>
+        <label>Difficulty:</label>
+          <div className="button-group">
+            <button
+              type="button"
+              className={difficulty === "Easy" ? "selected" : ""}
+              onClick={() => setDifficulty("Easy")}>
+              Easy
+            </button>
+            <button
+              type="button"
+              className={difficulty === "Hard" ? "selected" : ""}
+              onClick={() => setDifficulty("Hard")}>
+              Hard
+            </button>
+          </div>
         <div style={{ marginTop: "20px" }}>
           <Link to="/game/home">
             <HomeRoundedIcon />

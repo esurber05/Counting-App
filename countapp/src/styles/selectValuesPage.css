@@ -49,4 +49,9 @@ body {
     color: red;
     margin: 10px 0;
   }
-  
+
+  .button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
