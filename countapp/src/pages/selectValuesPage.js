@@ -6,13 +6,9 @@ import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 const SelectValuesPage = () => {
   const [number, setNumber] = useState("");
   const [difficulty, setDifficulty] = useState(null);
+  const [placement, setPlacement] = useState(null);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-
-  const handleNumberSelect = (value) => {
-    setNumber(value);
-    setError("");
-  };
 
 
   const handleSubmit = (e) => {
@@ -32,11 +28,16 @@ const SelectValuesPage = () => {
       return;
     }
 
+    if (placement == null) {
+      setError("Select a placement.");
+      return;
+    }
+
 
     setError("");
-    const answers = { number: num};
+    const answers = {number: num, difficulty: difficulty, placement: placement};
     localStorage.setItem("selectValuesPageAnswers", JSON.stringify(answers));
-    setSuccess("Values submitted successfully!" + "\nNumber: " + num + " Difficulty: " + difficulty);
+    setSuccess("Values submitted successfully!" + "\nNumber: " + num + ", Difficulty: " + difficulty + ", Placement: " + placement);
     console.log("Submitted:", answers);
   };
 
@@ -54,7 +55,7 @@ const SelectValuesPage = () => {
             min="1"
             max="10"
           />
-          <label>Difficulty:</label>
+          <label>Difficulty (Easy: ± 5 to 6, Hard: ± 1 to 3):</label>
           <div className="button-group">
             <button
               type="button"
@@ -67,6 +68,22 @@ const SelectValuesPage = () => {
               className={difficulty === "Hard" ? "selected" : ""}
               onClick={() => setDifficulty("Hard")}>
               Hard
+            </button>
+          </div>
+
+          <label>Placement:</label>
+          <div className="button-group-two">
+            <button
+              type="button"
+              className={placement === "Static" ? "selected" : ""}
+              onClick={() => setPlacement("Static")}>
+              Static
+            </button>
+            <button
+              type="button"
+              className={placement === "Dynamic" ? "selected" : ""}
+              onClick={() => setPlacement("Dynamic")}>
+              Dynamic
             </button>
           </div>
           {error && <div className="error">{error}</div>}

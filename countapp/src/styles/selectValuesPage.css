@@ -60,4 +60,15 @@ body {
     background-color: #007bff;
     color: #fff;
   }
+
+  .button-group-two {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .button-group-two button.selected {
+    background-color: #007bff;
+    color: #fff;
+  }
   
