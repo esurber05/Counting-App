@@ -55,3 +55,9 @@ body {
     justify-content: center;
     gap: 20px;
   }
+
+  .button-group button.selected {
+    background-color: #007bff;
+    color: #fff;
+  }
+  

@@ -36,7 +36,7 @@ const SelectValuesPage = () => {
     setError("");
     const answers = { number: num};
     localStorage.setItem("selectValuesPageAnswers", JSON.stringify(answers));
-    setSuccess("Values submitted successfully!" + "\nNumber: " + num);
+    setSuccess("Values submitted successfully!" + "\nNumber: " + num + " Difficulty: " + difficulty);
     console.log("Submitted:", answers);
   };
 
@@ -54,11 +54,7 @@ const SelectValuesPage = () => {
             min="1"
             max="10"
           />
-          {error && <div className="error">{error}</div>}
-          {success && <div className="success">{success}</div>}
-          <button type="submit">Submit</button>
-        </form>
-        <label>Difficulty:</label>
+          <label>Difficulty:</label>
           <div className="button-group">
             <button
               type="button"
@@ -73,6 +69,10 @@ const SelectValuesPage = () => {
               Hard
             </button>
           </div>
+          {error && <div className="error">{error}</div>}
+          {success && <div className="success">{success}</div>}
+          <button type="submit">Submit</button>
+        </form>
         <div style={{ marginTop: "20px" }}>
           <Link to="/game/home">
             <HomeRoundedIcon />
