@@ -6,6 +6,7 @@ import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 const SelectValuesPage = () => {
   const [min, setMin] = useState("");
   const [max, setMax] = useState("");
+  const [numProblems, setNumProblems] = useState("");
   const [difficulty, setDifficulty] = useState(null);
   const [placement, setPlacement] = useState(null);
   const [error, setError] = useState("");
@@ -17,6 +18,7 @@ const SelectValuesPage = () => {
 
     const minNum = parseInt(min, 10);
     const maxNum = parseInt(max, 10);
+    const numProblemsNum = parseInt(numProblems, 10);
 
     // Validate that min and max are numbers between 1 and 10
     if (isNaN(minNum) || minNum < 1 || minNum > 10) {
@@ -31,6 +33,11 @@ const SelectValuesPage = () => {
       setError("Minimum number cannot be greater than maximum number.");
       return;
     }
+    // Validate the number of problems is at least 1
+    if (isNaN(numProblemsNum) || numProblemsNum < 1) {
+      setError("Enter a valid number of problems (at least 1).");
+      return;
+    }
 
     if (difficulty == null) {
       setError("Select a difficulty.");
@@ -43,11 +50,17 @@ const SelectValuesPage = () => {
     }
 
     setError("");
-    const answers = { range: { min: minNum, max: maxNum }, difficulty, placement };
+    const answers = { 
+      range: { min: minNum, max: maxNum },
+      numProblems: numProblemsNum,
+      difficulty, 
+      placement 
+    };
     localStorage.setItem("selectValuesPageAnswers", JSON.stringify(answers));
     setSuccess(
       "Values submitted successfully!\n" +
       "Range: " + minNum + " - " + maxNum +
+      ", Number of Problems: " + numProblemsNum +
       ", Difficulty: " + difficulty +
       ", Placement: " + placement
     );
@@ -68,7 +81,7 @@ const SelectValuesPage = () => {
                 id="minInput"
                 value={min}
                 onChange={(e) => setMin(e.target.value)}
-                min="2"
+                min="1"
                 max="10"
               />
             </div>
@@ -79,10 +92,21 @@ const SelectValuesPage = () => {
                 id="maxInput"
                 value={max}
                 onChange={(e) => setMax(e.target.value)}
-                min="2"
+                min="1"
                 max="10"
               />
             </div>
+          </div>
+
+          <div className="problems-input">
+            <label htmlFor="numProblemsInput">Number of Problems:</label>
+            <input
+              type="number"
+              id="numProblemsInput"
+              value={numProblems}
+              onChange={(e) => setNumProblems(e.target.value)}
+              min="1"
+            />
           </div>
 
           <label>Difficulty (Easy: ± 5 to 6, Hard: ± 1 to 3):</label>
