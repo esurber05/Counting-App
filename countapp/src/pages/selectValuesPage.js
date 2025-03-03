@@ -4,22 +4,31 @@ import "../styles/selectValuesPage.css";
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 
 const SelectValuesPage = () => {
-  const [number, setNumber] = useState("");
+  const [min, setMin] = useState("");
+  const [max, setMax] = useState("");
   const [difficulty, setDifficulty] = useState(null);
   const [placement, setPlacement] = useState(null);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
-
     setSuccess("");
-    
-    // Validate that the number is between 1 and 10
-    const num = parseInt(number, 10);
-    if (isNaN(num) || num < 1 || num > 10) {
-      setError("Enter a number from 1 to 10.");
+
+    const minNum = parseInt(min, 10);
+    const maxNum = parseInt(max, 10);
+
+    // Validate that min and max are numbers between 1 and 10
+    if (isNaN(minNum) || minNum < 1 || minNum > 10) {
+      setError("Enter a minimum number from 1 to 10.");
+      return;
+    }
+    if (isNaN(maxNum) || maxNum < 1 || maxNum > 10) {
+      setError("Enter a maximum number from 1 to 10.");
+      return;
+    }
+    if (minNum > maxNum) {
+      setError("Minimum number cannot be greater than maximum number.");
       return;
     }
 
@@ -33,11 +42,15 @@ const SelectValuesPage = () => {
       return;
     }
 
-
     setError("");
-    const answers = {number: num, difficulty: difficulty, placement: placement};
+    const answers = { range: { min: minNum, max: maxNum }, difficulty, placement };
     localStorage.setItem("selectValuesPageAnswers", JSON.stringify(answers));
-    setSuccess("Values submitted successfully!" + "\nNumber: " + num + ", Difficulty: " + difficulty + ", Placement: " + placement);
+    setSuccess(
+      "Values submitted successfully!\n" +
+      "Range: " + minNum + " - " + maxNum +
+      ", Difficulty: " + difficulty +
+      ", Placement: " + placement
+    );
     console.log("Submitted:", answers);
   };
 
@@ -46,15 +59,32 @@ const SelectValuesPage = () => {
       <h2>Select Your Values</h2>
       <div className="form-container">
         <form onSubmit={handleSubmit}>
-          <label htmlFor="numberInput">Number (1-10):</label>
-          <input
-            type="number"
-            id="numberInput"
-            value={number}
-            onChange={(e) => setNumber(e.target.value)}
-            min="1"
-            max="10"
-          />
+          <label>Range:</label>
+          <div className="range-inputs">
+            <div>
+              <label htmlFor="minInput">Min (1-10):</label>
+              <input
+                type="number"
+                id="minInput"
+                value={min}
+                onChange={(e) => setMin(e.target.value)}
+                min="2"
+                max="10"
+              />
+            </div>
+            <div>
+              <label htmlFor="maxInput">Max (1-10):</label>
+              <input
+                type="number"
+                id="maxInput"
+                value={max}
+                onChange={(e) => setMax(e.target.value)}
+                min="2"
+                max="10"
+              />
+            </div>
+          </div>
+
           <label>Difficulty (Easy: ± 5 to 6, Hard: ± 1 to 3):</label>
           <div className="button-group">
             <button
