@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../styles/base.css";
 
 // Import assets
 import TrayImg from "../assests/greenTray.png";
 import CookieImg from "../assests/creamCookie.png";
 
-const CookieTrayTestPage = () => {
-  // Dimensions
+// Import the tray generation functions
+import { generateDynamicTray, generateStaticTray } from "../helpers/trayGenerators";
+
+const CookieTray = ({ type = "static", numCookies = 10 }) => {
   const trayW = 300, trayH = 400;
   const cookieW = 60, cookieH = 60;
   const padding = 20;
@@ -15,41 +18,14 @@ const CookieTrayTestPage = () => {
   const [cookies, setCookies] = useState([]);
 
   useEffect(() => {
-    const numCookies = Math.floor(Math.random() * 10) + 1;
-    let placedCookies = [];
-
-    for (let i = 0; i < numCookies; i++) {
-      let newCookie;
-      let tries = 0, maxTries = 100; // Give up after too many tries
-
-      while (tries < maxTries) {
-        newCookie = {
-          x: Math.random() * (trayW - cookieW - 2 * padding) + padding,
-          y: Math.random() * (trayH - cookieH - 2 * padding) + padding
-        };
-
-        // Check for overlap
-        let tooClose = placedCookies.some(existing => {
-          let dx = existing.x - newCookie.x;
-          let dy = existing.y - newCookie.y;
-          return Math.sqrt(dx * dx + dy * dy) < minGap;
-        });
-
-        if (!tooClose) break;
-        tries++;
-      }
-
-      // Store the cookie's position
-      placedCookies.push(newCookie);
+    let trayCookies;
+    if (type === "dynamic") {
+      trayCookies = generateDynamicTray(numCookies, trayW, trayH, cookieW, cookieH, padding, minGap);
+    } else if (type === "static") {
+      trayCookies = generateStaticTray(numCookies);
     }
-
-    // Convert positions for rendering
-    setCookies(placedCookies.map((cookie, index) => ({
-      id: index,
-      left: `${Math.round(cookie.x)}px`,
-      top: `${Math.round(cookie.y)}px`
-    })));
-  }, []);
+    setCookies(trayCookies);
+  }, [type, numCookies]);
 
   return (
     <div style={{ textAlign: "center", marginTop: "50px" }}>
@@ -63,7 +39,6 @@ const CookieTrayTestPage = () => {
         }}
       >
         <img src={TrayImg} alt="Tray" style={{ width: `${trayW}px`, height: `${trayH}px`, display: "block" }} />
-
         {cookies.map(cookie => (
           <img
             key={cookie.id}
@@ -84,4 +59,4 @@ const CookieTrayTestPage = () => {
   );
 };
 
-export default CookieTrayTestPage;
+export default CookieTray;
