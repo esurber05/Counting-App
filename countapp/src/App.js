@@ -17,6 +17,7 @@ import BaseTrainingPage2 from './pages/baseTraining 2.js';
 import SelectValuesPage from './pages/selectValuesPage.js';
 import CookieTray from "./pages/cookietraytest.js";
 import CookieTrayStaticPage from './pages/cookietraystatic.js';
+import TrainingPage from './pages/trainPage.js';
 import { SoundProvider } from './helpers/SoundContext';
 import { AppDataProvider } from './context/Context.js';
 import './App.css';
@@ -55,6 +56,7 @@ function App() {
           <Route path='/game/touch/training/:page' element={<TouchTrainingPage />}/>
           <Route path="/game/cookie-tray-test" element={<CookieTray />} />
           <Route path="/game/cookie-tray-static" element={<CookieTrayStaticPage />} />
+          <Route path="/game/train-test/:page" element={<TrainingPage />} />
         </Routes>
      </Router>
      </AppDataProvider>

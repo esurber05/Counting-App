@@ -103,6 +103,7 @@ function Home() {
               <li><button className={`menu-button ${clickedButtons.includes(8) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(8, "/game/touch/play/0")}>Touch Task</button></li>
               <li><button className={`menu-button ${clickedButtons.includes(9) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(9, "/game/practice/0")}>Practice Counting</button></li>
               <li><button className={`menu-button ${clickedButtons.includes(10) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(10, "/game/values")}>Pick Values</button></li>
+              <li><button className={`menu-button ${clickedButtons.includes(11) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(11, "/game/train-test/0")}>Train Test</button></li>
             </ul>
           </div>
         ) : (
@@ -119,6 +120,7 @@ function Home() {
               <li><button className={`menu-button ${clickedButtons.includes(8) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(8, "/game/animation/play/0")}>Animated Task</button></li>
               <li><button className={`menu-button ${clickedButtons.includes(9) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(9, "/game/practice/0")}>Practice Counting</button></li>
               <li><button className={`menu-button ${clickedButtons.includes(10) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(10, "/game/values")}>Pick Values</button></li>
+              <li><button className={`menu-button ${clickedButtons.includes(11) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(11, "/game/train-test/0")}>Train Test</button></li>
             </div>
           </div>
         )}
