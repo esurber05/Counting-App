@@ -41,23 +41,40 @@ export function generateTrainingData() {
   const pages = [];
 
   for (let i = 0; i < numProblems; i++) {
-    const baseCookieAmount = Math.floor(Math.random() * (max - min + 1)) + min;
+    const cookieAmount = Math.floor(Math.random() * (max - min + 1)) + min;
 
-    // Generate static or dynamic trays based on placement
-    let leftTrayCookies, greenTrayCookies, purpleTrayCookies;
+    // Set required difference base on difficulty
+    const diffLower = difficulty === "Easy" ? 4 : 1;
+    const diffUpper = difficulty === "Easy" ? 6 : 3;
 
-    const purpleOrGreen = Math.random() < 0.5;
-    const greenCookieAmount = coin ? baseCookieAmount : baseCookieAmount + 1;
-    const purpleCookieAmount = coin ? baseCookieAmount + 1 : baseCookieAmount;
+    // Generate until canidate is +- from base depending on difficulty
+    let candidate;
+    do {
+      candidate = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+    } while (
+      Math.abs(candidate - cookieAmount) < diffLower ||
+      Math.abs(candidate - cookieAmount) > diffUpper
+    );
 
-    if (placement === "Static") {
-        leftTrayCookies = generateStaticTray(baseCookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
-        greenTrayCookies = generateStaticTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
-        purpleTrayCookies = generateStaticTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
+    // Randomly deciede which gets regular amount and which gets candidate amount
+    let greenCookieAmount, purpleCookieAmount;
+    if (Math.random() < 0.5) {
+      greenCookieAmount = cookieAmount;
+      purpleCookieAmount = candidate;
     } else {
-        leftTrayCookies = generateDynamicTray(baseCookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
-        greenTrayCookies = generateDynamicTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
-        purpleTrayCookies = generateDynamicTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
+      purpleCookieAmount = cookieAmount;
+      greenCookieAmount = candidate;
+    }
+    
+    let leftTrayCookies, greenTrayCookies, purpleTrayCookies;
+    if (placement === "Static") {
+        leftTrayCookies = generateStaticTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
+        greenTrayCookies = generateStaticTray(greenCookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
+        purpleTrayCookies = generateStaticTray(purpleCookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
+    } else {
+        leftTrayCookies = generateDynamicTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
+        greenTrayCookies = generateDynamicTray(greenCookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
+        purpleTrayCookies = generateDynamicTray(purpleCookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
     }
 
     // Messages for TTS
