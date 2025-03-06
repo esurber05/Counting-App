@@ -4,14 +4,33 @@ import { generateDynamicTray } from "./trayGenerators";
 
 export function generateTrainingData(numPages, cookieCounts) {
 
+    // Default values
+    const defaultMin = 1;
+    const defaultMax = 10;
+    const defaultNumProblems = 3;
+    const defaultDifficulty = "Easy";
+    const defaultPlacement = "Dynamic";
+
+    // Get stored values
     const storedValues = localStorage.getItem("selectValuesPageAnswers");
 
-    if (storedValues) {
-        const values = JSON.parse(storedValues);
-        const { range: { min, max }, numProblems, difficulty, placement
-        } = values;
-    }
+    let min, max, numProblems, difficulty, placement;
 
+    // Set values to stored values
+    if (storedValues) {
+      const values = JSON.parse(storedValues);
+      min = values.range && values.range.min !== undefined ? values.range.min : defaultMin;
+      max = values.range && values.range.max !== undefined ? values.range.max : defaultMax;
+      numProblems = values.numProblems !== undefined ? values.numProblems : defaultNumProblems;
+      difficulty = values.difficulty || defaultDifficulty;
+      placement = values.placement || defaultPlacement;
+    } else {
+      min = defaultMin;
+      max = defaultMax;
+      numProblems = defaultNumProblems;
+      difficulty = defaultDifficulty;
+      placement = defaultPlacement;
+    }
 
     const trayW = 300,
     trayH = 400,
@@ -26,6 +45,9 @@ export function generateTrainingData(numPages, cookieCounts) {
     const cookieAmount = cookieCounts[i] || 1;
 
     // generate layouts
+    if (placement === "Static") {
+    
+    }
     const leftTrayCookies = generateDynamicTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
     const greenTrayCookies = generateDynamicTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
     const purpleTrayCookies = generateDynamicTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
