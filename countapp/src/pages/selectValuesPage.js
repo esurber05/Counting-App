@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/selectValuesPage.css";
+import { useAppData } from "../context/Context.js";
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 
 const SelectValuesPage = () => {
@@ -11,6 +12,7 @@ const SelectValuesPage = () => {
   const [placement, setPlacement] = useState(null);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const { selectedOption } = useAppData();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -145,9 +147,9 @@ const SelectValuesPage = () => {
           <button type="submit">Submit</button>
         </form>
         <div style={{ marginTop: "20px" }}>
-          <Link to="/game/home">
-            <HomeRoundedIcon />
-          </Link>
+           <Link to={`/game/home/${selectedOption}`}>
+              <HomeRoundedIcon />
+            </Link>
         </div>
       </div>
     </div>

@@ -41,7 +41,7 @@ export function generateTrainingData() {
   const pages = [];
 
   for (let i = 0; i < numProblems; i++) {
-    const cookieAmount = cookieCounts[i] || 1;
+    const cookieAmount = Math.floor(Math.random() * (max - min + 1)) + min;
 
     // Generate static or dynamic trays based on placement
     let leftTrayCookies, greenTrayCookies, purpleTrayCookies;

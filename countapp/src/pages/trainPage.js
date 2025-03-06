@@ -87,7 +87,7 @@ const TrainingPage = () => {
 
   // Generate training data
   useEffect(() => {
-    const data = generateTrainingData(numPages, cookieCounts);
+    const data = generateTrainingData();
     setTrainingData(data);
   }, []);
 
@@ -104,7 +104,7 @@ const TrainingPage = () => {
   };
 
   const handleNextPage = () => {
-    if (currentPage < numPages - 1) {
+    if (currentPage < trainingData.pages.length - 1) {
       messageRef.current = false;
       spokenRef.current = false;
       setShowGrayArea(false);
@@ -248,7 +248,7 @@ const TrainingPage = () => {
               <ArrowBackIosIcon />
             </button>
           )}
-          {currentPage < numPages - 1 ? (
+          {currentPage < trainingData.pages.length - 1 ? (
             <button onClick={handleNextPage}>
               <ArrowForwardIosIcon />
             </button>
