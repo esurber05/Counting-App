@@ -1,8 +1,7 @@
 import { generateDynamicTray } from "./trayGenerators";
+import { generateStaticTray } from "./trayGenerators";
 
-
-
-export function generateTrainingData(numPages, cookieCounts) {
+export function generateTrainingData() {
 
     // Default values
     const defaultMin = 1;
@@ -36,21 +35,26 @@ export function generateTrainingData(numPages, cookieCounts) {
     trayH = 400,
     cookieW = 60,
     cookieH = 60,
-    padding = 20,
+    padding = 25,
     minGap = cookieW * 1.1;
 
   const pages = [];
 
-  for (let i = 0; i < numPages; i++) {
+  for (let i = 0; i < numProblems; i++) {
     const cookieAmount = cookieCounts[i] || 1;
 
-    // generate layouts
+    // Generate static or dynamic trays based on placement
+    let leftTrayCookies, greenTrayCookies, purpleTrayCookies;
+
     if (placement === "Static") {
-    
+        leftTrayCookies = generateStaticTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
+        greenTrayCookies = generateStaticTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
+        purpleTrayCookies = generateStaticTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
+    } else {
+        leftTrayCookies = generateDynamicTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
+        greenTrayCookies = generateDynamicTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
+        purpleTrayCookies = generateDynamicTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
     }
-    const leftTrayCookies = generateDynamicTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
-    const greenTrayCookies = generateDynamicTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
-    const purpleTrayCookies = generateDynamicTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
 
     // Messages for TTS
     const plural = cookieAmount > 1 ? "s" : "";
