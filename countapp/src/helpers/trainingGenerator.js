@@ -1,7 +1,19 @@
 import { generateDynamicTray } from "./trayGenerators";
 
+
+
 export function generateTrainingData(numPages, cookieCounts) {
-   const trayW = 300,
+
+    const storedValues = localStorage.getItem("selectValuesPageAnswers");
+
+    if (storedValues) {
+        const values = JSON.parse(storedValues);
+        const { range: { min, max }, numProblems, difficulty, placement
+        } = values;
+    }
+
+
+    const trayW = 300,
     trayH = 400,
     cookieW = 60,
     cookieH = 60,
