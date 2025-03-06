@@ -41,17 +41,21 @@ export function generateTrainingData() {
   const pages = [];
 
   for (let i = 0; i < numProblems; i++) {
-    const cookieAmount = Math.floor(Math.random() * (max - min + 1)) + min;
+    const baseCookieAmount = Math.floor(Math.random() * (max - min + 1)) + min;
 
     // Generate static or dynamic trays based on placement
     let leftTrayCookies, greenTrayCookies, purpleTrayCookies;
 
+    const purpleOrGreen = Math.random() < 0.5;
+    const greenCookieAmount = coin ? baseCookieAmount : baseCookieAmount + 1;
+    const purpleCookieAmount = coin ? baseCookieAmount + 1 : baseCookieAmount;
+
     if (placement === "Static") {
-        leftTrayCookies = generateStaticTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
+        leftTrayCookies = generateStaticTray(baseCookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
         greenTrayCookies = generateStaticTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
         purpleTrayCookies = generateStaticTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
     } else {
-        leftTrayCookies = generateDynamicTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
+        leftTrayCookies = generateDynamicTray(baseCookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
         greenTrayCookies = generateDynamicTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
         purpleTrayCookies = generateDynamicTray(cookieAmount, trayW, trayH, cookieW, cookieH, padding, minGap);
     }
