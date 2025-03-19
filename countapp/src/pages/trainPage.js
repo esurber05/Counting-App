@@ -20,7 +20,6 @@ import { saveAnswers } from "../helpers/SaveAnswers";
 import { generateTrainingData } from "../helpers/trainingGenerator";
 
 const TrainingPage = () => {
-  // TODO get data from SELECT VALUES
   const numPages = 5;
   const cookieCounts = [8, 4, 3, 5, 3];
   const [trainingData, setTrainingData] = useState(null);
@@ -87,9 +86,16 @@ const TrainingPage = () => {
 
   // Generate training data
   useEffect(() => {
-    const data = generateTrainingData();
-    setTrainingData(data);
+    const storedTrainingData = localStorage.getItem("trainingData");
+    if (storedTrainingData) {
+      setTrainingData(JSON.parse(storedTrainingData));
+    } else {
+      // Fallback if data was not generated
+      const data = generateTrainingData();
+      setTrainingData(data);
+    }
   }, []);
+  
 
   const storeAnswer = (answerKey, answerValue) => {
     const storedAnswersJSON = localStorage.getItem("baselineTrainingAnswers");

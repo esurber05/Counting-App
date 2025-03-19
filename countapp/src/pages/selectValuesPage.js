@@ -4,6 +4,8 @@ import "../styles/selectValuesPage.css";
 import { useAppData } from "../context/Context.js";
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 
+import { generateTrainingData } from "../helpers/trainingGenerator";
+
 const SelectValuesPage = () => {
   const [min, setMin] = useState("");
   const [max, setMax] = useState("");
@@ -58,7 +60,13 @@ const SelectValuesPage = () => {
       difficulty, 
       placement 
     };
+    
     localStorage.setItem("selectValuesPageAnswers", JSON.stringify(answers));
+
+    // Store training data
+    const trainingData = generateTrainingData();
+    localStorage.setItem("trainingData", JSON.stringify(trainingData));
+
     setSuccess(
       "Values submitted successfully!\n" +
       "Range: " + minNum + " - " + maxNum +
