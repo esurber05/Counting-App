@@ -100,10 +100,14 @@ function Home() {
               <li><button className={`menu-button ${clickedButtons.includes(5) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(5, "/game/base2/training/0")}>Baseline Training 2</button></li>
               <li><button className={`menu-button ${clickedButtons.includes(6) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(6, "/game/base2/0")}>Baseline Task 2</button></li>
               <li><button className={`menu-button ${clickedButtons.includes(7) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(7, "/game/touch/training/0")}>Touch Training</button></li>
-              <li><button className={`menu-button ${clickedButtons.includes(8) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(8, "/game/touch/play/0")}>Touch Task</button></li>
-              <li><button className={`menu-button ${clickedButtons.includes(9) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(9, "/game/practice/0")}>Practice Counting</button></li>
-              <li><button className={`menu-button ${clickedButtons.includes(10) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(10, "/game/train-custom/0")}>Train Custom</button></li>
-              <li><button className={`menu-button ${clickedButtons.includes(11) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(11, "/game/values")}>Pick Values</button></li>
+
+              <li><button className={`menu-button ${clickedButtons.includes(8) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(8, "/game/touch2/play/0")}>Prev Touch Task</button></li>
+              <li><button className={`menu-button ${clickedButtons.includes(9) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(9, "/game/touch/play/0")}>Touch Task</button></li>
+              <li><button className={`menu-button ${clickedButtons.includes(10) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(9, "/game/practice/0")}>Practice Counting</button></li>
+
+              <li><button className={`menu-button ${clickedButtons.includes(11) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(11, "/game/train-custom/0")}>Train Custom</button></li>
+              <li><button className={`menu-button ${clickedButtons.includes(12) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(12, "/game/values")}>Pick Values</button></li>
+
             </ul>
           </div>
         ) : (
@@ -113,14 +117,18 @@ function Home() {
               <li><button className={`menu-button ${clickedButtons.includes(1) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(1, "/game/base/training/0")}>Baseline Training 1</button></li>
               <li><button className={`menu-button ${clickedButtons.includes(2) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(2, `/game/base/0`)}>Baseline Task 1</button></li>
               <li><button className={`menu-button ${clickedButtons.includes(3) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(3, "/game/touch/training/0")}>Touch Training</button></li>
-              <li><button className={`menu-button ${clickedButtons.includes(4) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(4, "/game/touch/play/0")}>Touch Task</button></li>
-              <li><button className={`menu-button ${clickedButtons.includes(5) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(5, "/game/base2/training/0")}>Baseline Training 2</button></li>
-              <li><button className={`menu-button ${clickedButtons.includes(6) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(6, "/game/base2/0")}>Baseline Task 2</button></li>
-              <li><button className={`menu-button ${clickedButtons.includes(7) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(7, "/game/animation/training/0")}>Animated Training</button></li>
-              <li><button className={`menu-button ${clickedButtons.includes(8) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(8, "/game/animation/play/0")}>Animated Task</button></li>
-              <li><button className={`menu-button ${clickedButtons.includes(9) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(9, "/game/practice/0")}>Practice Counting</button></li>
-              <li><button className={`menu-button ${clickedButtons.includes(10) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(10, "/game/train-custom/0")}>Train Custom</button></li>
-              <li><button className={`menu-button ${clickedButtons.includes(11) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(11, "/game/values")}>Pick Values</button></li>
+
+              <li><button className={`menu-button ${clickedButtons.includes(4) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(4, "/game/touch2/play/0")}>Prev Touch Task</button></li>
+              <li><button className={`menu-button ${clickedButtons.includes(5) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(5, "/game/touch/play/0")}>Touch Task</button></li>
+              <li><button className={`menu-button ${clickedButtons.includes(6) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(5, "/game/base2/training/0")}>Baseline Training 2</button></li>
+              <li><button className={`menu-button ${clickedButtons.includes(7) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(6, "/game/base2/0")}>Baseline Task 2</button></li>
+              <li><button className={`menu-button ${clickedButtons.includes(8) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(7, "/game/animation/training/0")}>Animated Training</button></li>
+              <li><button className={`menu-button ${clickedButtons.includes(9) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(8, "/game/animation/play/0")}>Animated Task</button></li>
+              <li><button className={`menu-button ${clickedButtons.includes(10) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(9, "/game/practice/0")}>Practice Counting</button></li>
+
+              <li><button className={`menu-button ${clickedButtons.includes(11) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(11, "/game/train-custom/0")}>Train Custom</button></li>
+              <li><button className={`menu-button ${clickedButtons.includes(12) ? 'clicked' : ''}`} onClick={() => handleMenubtnClick(12, "/game/values")}>Pick Values</button></li>
+
             </div>
           </div>
         )}

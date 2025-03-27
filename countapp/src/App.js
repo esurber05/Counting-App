@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SelectorPage from './pages/SelectorPage.js';
 import Home from './pages/home';
 import GamePage from './pages/gamepage';
+import PrevGamePage from './pages/prevGamePage'; // Import the PrevGamePage component
 import AnimationPage from './pages/animationpage'
 import TrainPage from './pages/training';
 import PracticePage from './pages/practice';
@@ -41,7 +42,8 @@ function App() {
           <Route path='/' element={isLoggedIn == "true"? <Home /> : <SignupPage />}/>
           <Route path='/game/selection' element={<SelectorPage />}/>
           <Route path='/game/home/:option' element={<Home />}/>
-          <Route path='/game/touch/play/:page' element={<GamePage />}/>
+          <Route path='/game/touch2/play/:page' element={<PrevGamePage />}/>  {/* Add a route to the original touch task component*/}
+          <Route path='/game/touch/play/:page' element={<GamePage />}/>   {/* Add a route to the updated and improved touch task component*/}
           <Route path='/game/animation/play/:page' element={<AnimationPage />}/>
           <Route path='/game/train/:page' element={<TrainPage />}/>
           <Route path='/game/practice/:page' element={<PracticePage />}/>
