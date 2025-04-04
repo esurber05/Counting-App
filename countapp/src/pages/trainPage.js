@@ -47,14 +47,10 @@ const TrainingPage = () => {
 
   // Speak message when page changes
   const speakUtterance = () => {
-    if (soundEnabled && trainingData) {
-      const utterance = trainingData.pages[currentPage].message[0];
-      setTimeout(() => {
-        textToSpeech(utterance, handleSpeechEnd);
-      }, 1000);
-    } else {
-      handleSpeechEnd();
-    }
+    console.log("trying to speak");
+    const utterance = trainingData.pages[currentPage].message[0];
+    console.log("if success");
+    textToSpeech(utterance, handleSpeechEnd);
   };
 
   function handleSpeechEnd() {
@@ -64,9 +60,8 @@ const TrainingPage = () => {
   }
 
   useEffect(() => {
-    if (trainingData && !spokenRef.current) {
+    if (trainingData) {
       speakUtterance();
-      spokenRef.current = true;
     }
   }, [currentPage, trainingData]);
 

@@ -229,7 +229,7 @@ app.post("/register", async (req, res) => {
 
   app.post('/speech/synthesize', async (req, res) => {
     try {
-      const { text} = req.body;
+      const {text} = req.body;
       
       const  voice = {languageCode: 'en-US', name :'en-US-Neural2-G' };
       const request = {
