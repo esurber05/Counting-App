@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SelectorPage from './pages/SelectorPage.js';
 import Home from './pages/home';
 import GamePage from './pages/gamepage';
+import PrevGamePage from './pages/prevGamePage'; // Import the PrevGamePage component
 import AnimationPage from './pages/animationpage'
 import TrainPage from './pages/training';
 import PracticePage from './pages/practice';
@@ -15,8 +16,6 @@ import TouchTrainingPage from './pages/TouchTrainingPage';
 import BasePage2 from './pages/basePage 2.js';
 import BaseTrainingPage2 from './pages/baseTraining 2.js';
 import SelectValuesPage from './pages/selectValuesPage.js';
-import CookieTray from "./pages/cookietraytest.js";
-import CookieTrayStaticPage from './pages/cookietraystatic.js';
 import TrainingPage from './pages/trainPage.js';
 import { SoundProvider } from './helpers/SoundContext';
 import { AppDataProvider } from './context/Context.js';
@@ -44,7 +43,8 @@ function App() {
           <Route path='/game/selection' element={<SelectorPage />}/>
           <Route path='/game/values' element={<SelectValuesPage />}/>
           <Route path='/game/home/:option' element={<Home />}/>
-          <Route path='/game/touch/play/:page' element={<GamePage />}/>
+          <Route path='/game/touch2/play/:page' element={<PrevGamePage />}/>  {/* Add a route to the original touch task component*/}
+          <Route path='/game/touch/play/:page' element={<GamePage />}/>   {/* Add a route to the updated and improved touch task component*/}
           <Route path='/game/animation/play/:page' element={<AnimationPage />}/>
           <Route path='/game/train/:page' element={<TrainPage />}/>
           <Route path='/game/practice/:page' element={<PracticePage />}/>
@@ -54,9 +54,8 @@ function App() {
           <Route path='/game/base2/training/:page' element={<BaseTrainingPage2 />}/>
           <Route path='/game/animation/training/:page' element={<AnimationTrainingPage />}/>
           <Route path='/game/touch/training/:page' element={<TouchTrainingPage />}/>
-          <Route path="/game/cookie-tray-test" element={<CookieTray />} />
-          <Route path="/game/cookie-tray-static" element={<CookieTrayStaticPage />} />
-          <Route path="/game/train-test/:page" element={<TrainingPage />} />
+          <Route path="/game/train-custom/:page" element={<TrainingPage />} />
+          <Route path='/game/values' element={<SelectValuesPage />}/>
         </Routes>
      </Router>
      </AppDataProvider>

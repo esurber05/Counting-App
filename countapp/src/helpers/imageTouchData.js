@@ -36,10 +36,6 @@ export const handleInteraction = (event, setTouchData) => {
   };
 
 
-
-  
-
-
   export const handleNextClickTouchData = (touchData,category, pageNo) => {
     console.log("touchdata:", touchData)
     fetch('/save/Touch/Data', {
