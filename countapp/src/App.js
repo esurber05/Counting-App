@@ -57,7 +57,6 @@ function App() {
           <Route path='/game/touch/training/:page' element={<TouchTrainingPage />}/>
           <Route path="/game/train-custom/:page" element={<TrainingPage />} />
           <Route path='/game/values' element={<SelectValuesPage />}/>
-          <Route path='/game/stTest' element={<STTTest />}/>
         </Routes>
      </Router>
      </AppDataProvider>
