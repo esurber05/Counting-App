@@ -19,6 +19,7 @@ import SelectValuesPage from './pages/selectValuesPage.js';
 import TrainingPage from './pages/trainPage.js';
 import { SoundProvider } from './helpers/SoundContext';
 import { AppDataProvider } from './context/Context.js';
+import STTTest from './pages/sttTest.js';
 import './App.css';
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
           <Route path='/game/touch/training/:page' element={<TouchTrainingPage />}/>
           <Route path="/game/train-custom/:page" element={<TrainingPage />} />
           <Route path='/game/values' element={<SelectValuesPage />}/>
+          <Route path='/game/stTest' element={<STTTest />}/>
         </Routes>
      </Router>
      </AppDataProvider>

@@ -20,8 +20,6 @@ import { saveAnswers } from "../helpers/SaveAnswers";
 import { generateTrainingData } from "../helpers/trainingGenerator";
 
 const TrainingPage = () => {
-  const numPages = 5;
-  const cookieCounts = [8, 4, 3, 5, 3];
   const [trainingData, setTrainingData] = useState(null);
   
   const { selectedOption } = useAppData();
